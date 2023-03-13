@@ -1,7 +1,7 @@
 <?php
 $users = unserialize(file_get_contents(__DIR__ . '/users.ser'));
 
-$page = (int) ($_GET['page'] ?? 1);
+// $page = (int) ($_GET['page'] ?? 1);
 
 $sort = $_GET['sort'] ?? '';
 
@@ -12,7 +12,7 @@ elseif ($sort == 'surname_desc') {
     usort($users, fn($a, $b) => $b['surname'] <=> $a['surname']);
 }
 
-$users = array_slice($users, ($page - 1) * 10, 10);
+// $users = array_slice($users, ($page - 1) * 10, 10);
 
 ?>
 
@@ -33,6 +33,7 @@ $users = array_slice($users, ($page - 1) * 10, 10);
 
 <body>
     <?php require __DIR__ . '/menu.php' ?>
+
     <form action="" method="get">
         <fieldset>
             <legend>SORT:</legend>
@@ -40,7 +41,7 @@ $users = array_slice($users, ($page - 1) * 10, 10);
                 <option value="surname_asc" <?php if ($sort == 'surname_asc') echo 'selected' ?>>Surname A-Z</option>
                 <option value="surname_desc" <?php if ($sort == 'surname_desc') echo 'selected' ?>>Surname Z-A</option>
             </select>
-            <button type="submit" class="btn btn-secondary" disabled>sort</button>
+            <button type="submit">sort</button>
         </fieldset>
     </form>
     <ul>

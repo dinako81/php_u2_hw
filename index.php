@@ -46,7 +46,7 @@ echo '<pre>';
 print_r($users);
 
 $users = array_map(function($user) {
-    $user['amount'] = randString('');
+    $user['amount'] = randString();
     return $user;
 }, $users);
 

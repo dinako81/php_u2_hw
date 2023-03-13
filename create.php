@@ -39,24 +39,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/style.css">
     <title>Create</title>
-    <style>
-    form {
-        margin: 50px;
-        padding: 20px;
-        border: 1px solid black;
-        width: 300px;
-    }
 
-    label {
-        width: 100px;
-        display: inline-block;
-    }
-
-    div {
-        margin-bottom: 10px;
-    }
-    </style>
 </head>
 
 <body>
@@ -65,15 +51,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <form action="" method="post">
         <fieldset>
             <legend>ADD NEW ACCOUNT:</legend>
-            <input type="text" name="personal_code">
-            <label>account number: </label>
-            <label>name: </label>
+            <label>Name: </label>
             <input type="text" name="name">
-            <label>surname: </label>
+            <label>Surname: </label>
             <input type="text" name="surname">
-            <label>personal code: </label>
+            <label>Personal code: </label>
+            <input type="text" name="personal_code">
+            <label>Account number: </label>
             <input type="text" name="account_number">
-            <button type="submit" class="btn btn-outline-success me-2">ADD</button>
+            <button type="submit" class="btn btn-success">ADD</button>
         </fieldset>
 
     </form>
