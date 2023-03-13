@@ -13,8 +13,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         'surname' => $_POST['surname'],
         'personal_code' => $_POST['personal_code'],
         'account_number' => $_POST['account_number'],
-
-
     ];
 
     $users = unserialize(file_get_contents(__DIR__ . '/users.ser'));
@@ -40,21 +38,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Create</title>
-    <style>
-    form {
-        margin: 50px;
-        padding: 20px;
-        border: 1px solid black;
-        width: 300px;
-    }
-    label {
-        width: 100px;
-        display: inline-block;
-    }
-    div {
-        margin-bottom: 10px;
-    }
-    </style>
+    
 </head>
 
 <body>
@@ -63,15 +47,22 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <form action="" method="post">
         <fieldset>
             <legend>ADD NEW ACCOUNT:</legend>
-           
+            <div>
+            <label>personal code: </label>
+            <input type="text" name="personal code">
+            </div>
+            <div>
             <label>name: </label>
             <input type="text" name="name">
+            </div>
+            <div>
             <label>surname: </label>
-            <input type="text" name="surname">  
-            <label>personal code: </label>
-            <input type="text" name="personal code">         
+            <input type="text" name="surname"> 
+            </div>
+            <div>
             <label>account number: </label>
             <input type="text" name="account_number">
+            </div>
             <button type="submit">ADD</button>
         </fieldset>
 
