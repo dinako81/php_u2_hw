@@ -1,0 +1,13 @@
+li {
+  margin: 50px;
+  padding: 20px;
+  border: 1px solid black;
+  width: 500px;
+}
+label {
+  width: 100px;
+  display: inline;
+}
+div {
+  margin-bottom: 10px;
+}

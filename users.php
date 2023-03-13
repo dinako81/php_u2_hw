@@ -9,7 +9,7 @@ if ($sort == 'surname_asc') {
     usort($users, fn($a, $b) => $a['surname'] <=> $b['surname']);
 }
 elseif ($sort == 'surname_desc') {
-    usort($users, fn($a, $b) => $b['name'] <=> $a['surname']);
+    usort($users, fn($a, $b) => $b['surname'] <=> $a['surname']);
 }
 
 $users = array_slice($users, ($page - 1) * 10, 10);
@@ -24,30 +24,10 @@ $users = array_slice($users, ($page - 1) * 10, 10);
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/style.css">
     <title>users</title>
-    <style>
-    li {
-        margin: 50px;
-        padding: 20px;
-        border: 1px solid black;
-        width: 500px;
-    }
-    label {
-        width: 100px;
-        display: inline;
-    }
-    div {
-        margin-bottom: 10px;
-    }
-    a {
-        margin: 5px;
-        padding: 5px;
-        border: 1px solid black;
-        width: 30px;
-        font: 10px;
-        background-color: white;
-    }
-    </style>
+
 </head>
 <body>
     <?php require __DIR__ . '/menu.php' ?>
@@ -58,13 +38,15 @@ $users = array_slice($users, ($page - 1) * 10, 10);
                 <option value="surname_asc" <?php if ($sort == 'surname_asc') echo 'selected' ?>>Surname A-Z</option>
                 <option value="surname_desc" <?php if ($sort == 'surname_desc') echo 'selected' ?>>Surname Z-A</option>
             </select>
-            <button type="submit">sort</button>
+            <button type="submit" class="btn btn-secondary" disabled>sort</button>
         </fieldset>
     </form>
     <ul>
     
 
     <?php foreach($users as $user): ?>
+
+        
         <li>
             <b>ID:</b>    
             <?= $user['user_id'] ?> 
@@ -86,8 +68,8 @@ $users = array_slice($users, ($page - 1) * 10, 10);
             </div>
             <form action="http://localhost:8080/ciupakabros/php_u2_hw/delete.php?id=<?= $user['user_id'] ?>" method="post">
             <button type="submit">delete</button>
-            <a href="http://localhost:8080/ciupakabros/php_u2_hw/addfunds.php">Add funds</a>
-            <a href="http://localhost:8080/ciupakabros/php_u2_hw/deductfunds.php">Deduct funds</a>        
+            <a href="http://localhost:8080/ciupakabros/php_u2_hw/addfunds.php" class="nav-link active">Add funds</a>
+            <a href="http://localhost:8080/ciupakabros/php_u2_hw/deductfunds.php" class="nav-link active">Deduct funds</a>        
             </form>
         </li>
     <?php endforeach ?>

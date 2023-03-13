@@ -81,7 +81,7 @@ if (!$find) {
             <label>row: </label>
             <input type="number" name="amount"  value="<?= $user['amount'] ?>">
             <label>Add funds: </label>
-            <input type="number" name="place_in_row"  value="<?= $user['amount new'] ?>">
+            <input type="number" name="place_in_row"  value="<?= $user['new_amount'] ?>">
             <button type="submit">Add funs</button>
         </fieldset>
 

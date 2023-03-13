@@ -76,6 +76,16 @@ file_put_contents(__DIR__ . '/users.ser', serialize($users));
 echo '<pre>';
 print_r($users);
 
+$users = array_map(function($user) {
+    $user['initial_amount'] = 0;
+    return $user;
+}, $users);
+
+file_put_contents(__DIR__ . '/users.ser', serialize($users));
+
+echo '<pre>';
+print_r($users);
+
 
 // $personal_code = uniqid('my_prefix_', true);
 // echo $personal_code;

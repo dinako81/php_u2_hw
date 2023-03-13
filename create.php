@@ -63,14 +63,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <form action="" method="post">
         <fieldset>
             <legend>ADD NEW ACCOUNT:</legend>
-           
+            <input type="text" name="personal_code">         
+            <label>account number: </label>
             <label>name: </label>
             <input type="text" name="name">
             <label>surname: </label>
             <input type="text" name="surname">  
-            <label>personal code: </label>
-            <input type="text" name="personal code">         
-            <label>account number: </label>
+            <label>personal code: </label>            
             <input type="text" name="account_number">
             <button type="submit">ADD</button>
         </fieldset>
