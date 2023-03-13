@@ -20,6 +20,7 @@ $users = array_slice($users, ($page - 1) * 10, 10);
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -29,6 +30,7 @@ $users = array_slice($users, ($page - 1) * 10, 10);
     <title>users</title>
 
 </head>
+
 <body>
     <?php require __DIR__ . '/menu.php' ?>
     <form action="" method="get">
@@ -42,37 +44,40 @@ $users = array_slice($users, ($page - 1) * 10, 10);
         </fieldset>
     </form>
     <ul>
-    
 
-    <?php foreach($users as $user): ?>
 
-        
+        <?php foreach($users as $user): ?>
+
+
         <li>
-            <b>ID:</b>    
-            <?= $user['user_id'] ?> 
+            <b>ID:</b>
+            <?= $user['user_id'] ?>
             <div>
-            <b>Personal code:</b>  
-            <i><?= $user['personal_code'] ?> </i>
+                <b>Personal code:</b>
+                <i><?= $user['personal_code'] ?> </i>
             </div>
             <div>
-            <b>Name:</b>  
-            <i><?= $user['name'] ?> </i>
+                <b>Name:</b>
+                <i><?= $user['name'] ?> </i>
             </div>
             <div>
-            <b>Surname:</b> 
-            <?= $user['surname'] ?>
+                <b>Surname:</b>
+                <?= $user['surname'] ?>
             </div>
             <div>
-            <b>Amount:</b> 
-            <?= $user['amount'] ?>
+                <b>Amount:</b>
+                <?= $user['amount'] ?>
             </div>
-            <form action="http://localhost:8080/ciupakabros/php_u2_hw/delete.php?id=<?= $user['user_id'] ?>" method="post">
-            <button type="submit">delete</button>
-            <a href="http://localhost:8080/ciupakabros/php_u2_hw/addfunds.php" class="nav-link active">Add funds</a>
-            <a href="http://localhost:8080/ciupakabros/php_u2_hw/deductfunds.php" class="nav-link active">Deduct funds</a>        
+            <form action="http://localhost:8080/ciupakabros/php_u2_hw/delete.php?id=<?= $user['user_id'] ?>"
+                method="post">
+                <button type="submit" class="btn btn-outline-danger">delete</button>
+                <a href="http://localhost:8080/ciupakabros/php_u2_hw/addfunds.php" class="btn btn-primary">Add funds</a>
+                <a href="http://localhost:8080/ciupakabros/php_u2_hw/deductfunds.php" class="btn btn-primary">Deduct
+                    funds</a>
             </form>
         </li>
-    <?php endforeach ?>
-</ul>
+        <?php endforeach ?>
+    </ul>
 </body>
+
 </html>

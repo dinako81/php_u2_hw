@@ -47,10 +47,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         border: 1px solid black;
         width: 300px;
     }
+
     label {
         width: 100px;
         display: inline-block;
     }
+
     div {
         margin-bottom: 10px;
     }
@@ -59,19 +61,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 <body>
     <?php require __DIR__ . '/menu.php' ?>
-    
+
     <form action="" method="post">
         <fieldset>
             <legend>ADD NEW ACCOUNT:</legend>
-            <input type="text" name="personal_code">         
+            <input type="text" name="personal_code">
             <label>account number: </label>
             <label>name: </label>
             <input type="text" name="name">
             <label>surname: </label>
-            <input type="text" name="surname">  
-            <label>personal code: </label>            
+            <input type="text" name="surname">
+            <label>personal code: </label>
             <input type="text" name="account_number">
-            <button type="submit">ADD</button>
+            <button type="submit" class="btn btn-outline-success me-2">ADD</button>
         </fieldset>
 
     </form>

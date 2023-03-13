@@ -20,9 +20,13 @@
             <input type="text" name="surname" value="<?= $user['surname'] ?>">
             <label>Account balance: </label>
             <input type="number" name="account_balance" value="<?= $user['account_balance'] ?>">
-            <label>Deduct funds: </label>
-            <input type="number" name="put_amount" value="<?= $user['put_amount'] ?>">
-            <button type="submit">Deduct funs</button>
+
+            <label>Deduct funds </label>
+            <input input type="text" class="form-control" aria-label="Euro amount (with dot and two decimal places)"
+                name="put_amount" value="<?= $user['put_amount'] ?>">
+            <span class="input-group-text">€</span>
+            <span class="input-group-text">0.00</span>
+            <button type="submit" class="btn btn-danger">Deduct funs</button>
         </fieldset>
 
     </form>
