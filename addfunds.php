@@ -1,63 +1,3 @@
-<?php
-
-// POST scenarijus
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    session_start();
-
-    $id = (int) $_GET['id'];
-    $users = unserialize(file_get_contents(__DIR__ . '/users.ser'));
-
-    // tikrinam
-    foreach($users as $user) {
-        if ($user['place_in_row'] == (int) $_POST['place_in_row']) {
-            $_SESSION['msg'] = ['type' => 'error', 'text' => 'Row is invalid'];
-            header('Location: http://localhost/ciupakabros/014/edit.php?id='.$id);
-            die;
-        }
-    }
-
-
-    foreach($users as &$user) {
-        if ($user['user_id'] == $id) {
-            
-            $user['name'] = $_POST['name'];
-            $user['surname'] = $_POST['surname'];
-            $user['place_in_row'] = (int) $_POST['place_in_row'];
-
-            $users = serialize($users);
-            file_put_contents(__DIR__ . '/users.ser', $users);
-
-            break;
-        }
-    }
-
-    $_SESSION['msg'] = ['type' => 'ok', 'text' => 'User was edited'];
-    header('Location: http://localhost/ciupakabros/014/users.php?sort=id_desc');
-    die;
-}
-
-//GET scenarijus
-
-$users = unserialize(file_get_contents(__DIR__ . '/users.ser'));
-
-$id = (int) $_GET['id'];
-
-$find = false;
-foreach($users as $user) {
-    if ($user['user_id'] == $id) {
-        $find = true;
-        break;
-    }
-}
-
-if (!$find) {
-    die('User not found');
-}
-
-
-?>
-
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -70,18 +10,20 @@ if (!$find) {
 </head>
 
 <body>
+
+<?php require __DIR__ . '/menu.php' ?>
     
     <form action="?id=<?= $user['user_id'] ?>" method="post">
         <fieldset>
-            <legend>EDIT:</legend>
-            <label>name: </label>
+            <legend>ADD FUNDS:</legend>
+            <label>Name: </label>
             <input type="text" name="name" value="<?= $user['name'] ?>">
-            <label>surname: </label>
+            <label>Surname: </label>
             <input type="text" name="surname" value="<?= $user['surname'] ?>">
-            <label>row: </label>
-            <input type="number" name="amount"  value="<?= $user['amount'] ?>">
+            <label>Account balance: </label>
+            <input type="number" name="account_balance"  value="<?= $user['account_balance'] ?>">
             <label>Add funds: </label>
-            <input type="number" name="place_in_row"  value="<?= $user['new_amount'] ?>">
+            <input type="number" name="put_amount"  value="<?= $user['put_amount'] ?>">
             <button type="submit">Add funs</button>
         </fieldset>
 
