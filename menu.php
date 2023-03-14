@@ -5,8 +5,14 @@
 
 
 
-<a href="http://localhost:8080/ciupakabros/php_u2_hw/users.php?page=home&sort=asc&sort=desc">HOME
+<!-- <?php foreach (range(1, $all) as $page) : ?>
+
+<a href="http://localhost:8080/ciupakabros/php_u2_hw/users.php?page=<?= $page ?>&sort=<?= $sort ?? '' ?>">PAGE
+    <?= $page ?></a>
+
+<?php endforeach ?> -->
+
+<a href="http://localhost:8080/ciupakabros/php_u2_hw/users.php?page=home&sort=<?= $sort ?? '' ?>">HOME
 </a>
 
-
-<a href="http://localhost:8080/ciupakabros/php_u2_hw/create.php">Add New Account</a>
+<a href="http://localhost:8080/ciupakabros/php_u2_hw/create.php">Add New</a>

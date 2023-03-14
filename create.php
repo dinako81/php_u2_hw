@@ -8,7 +8,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     $user = [
         'user_id' => $id,
-        'place_in_row' => (int) $_POST['place_in_row'],
         'name' => $_POST['name'],
         'surname' => $_POST['surname'],
         'personal_code' => $_POST['personal_code'],

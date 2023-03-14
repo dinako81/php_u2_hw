@@ -1,7 +1,7 @@
 <?php
 $users = unserialize(file_get_contents(__DIR__ . '/users.ser'));
 
-// $page = (int) ($_GET['page'] ?? 1);
+$page = (int) ($_GET['page'] ?? 1);
 
 $sort = $_GET['sort'] ?? '';
 
@@ -11,11 +11,17 @@ if ($sort == 'surname_asc') {
 elseif ($sort == 'surname_desc') {
     usort($users, fn($a, $b) => $b['surname'] <=> $a['surname']);
 }
+// elseif ($sort == 'id_asc') {
+//     usort($users, fn($a, $b) => $a['user_id'] <=> $b['user_id']);
+// }
+// elseif ($sort == 'id_desc') {
+//     usort($users, fn($a, $b) => $b['user_id'] <=> $a['user_id']);
+// }
 
 // $users = array_slice($users, ($page - 1) * 10, 10);
 
-?>
 
+?>
 
 
 <!DOCTYPE html>

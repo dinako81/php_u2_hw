@@ -46,7 +46,7 @@ echo '<pre>';
 print_r($users);
 
 $users = array_map(function($user) {
-    $user['amount'] = randString();
+    $user['balance_amount'] = randString('');
     return $user;
 }, $users);
 
@@ -77,7 +77,7 @@ echo '<pre>';
 print_r($users);
 
 $users = array_map(function($user) {
-    $user['initial_amount'] = 0;
+    $user['initial_amount'] = randString('');
     return $user;
 }, $users);
 
