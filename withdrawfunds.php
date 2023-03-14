@@ -63,22 +63,19 @@ if (!$find) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Withdraw funds</title>
+    <title>WITHDRAW FUNDS</title>
 </head>
 
 <body>
     <?php require __DIR__ . '/menu.php' ?>
-
+    <h3>WITHDRAW FUNDS:</h3>
     <form action="?id=<?= $user['user_id'] ?>" method="post">
         <fieldset>
-            <legend>WITHDRAW FUNDS:</legend>
             <div>Name: <?= $user['name'] ?></div>
             <div>Surname: <?= $user['surname'] ?></div>
-            <div>Account balance: <?= $user['acc_balance'] ?></div>
-
-
+            <div>Account balance: <?= $user['acc_balance'] ?> Eur</div>
             <label>Add funds: </label>
-            <input type="text" name="acc_balance">
+            <input type="text" name="acc_balance" placeholder="euro">
             <button type="submit">Withdraw funds</button>
         </fieldset>
 

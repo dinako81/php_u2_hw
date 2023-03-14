@@ -1,9 +1,9 @@
 <?php
 $users = unserialize(file_get_contents(__DIR__ . '/users.ser'));
 
-echo '<pre>';
+// echo '<pre>';
 
-var_dump($users);
+// var_dump($users);
 
 $page = (int) ($_GET['page'] ?? 1);
 
@@ -46,23 +46,26 @@ elseif ($sort == 'surname_desc') {
 
     <form action="" method="get">
         <fieldset>
-            <legend>SORT:</legend>
-            <select name="sort">
-                <option value="surname_asc" <?php if ($sort == 'surname_asc') echo 'selected' ?>>Surname A-Z</option>
-                <option value="surname_desc" <?php if ($sort == 'surname_desc') echo 'selected' ?>>Surname Z-A</option>
-            </select>
-            <button type="submit">sort</button>
+            <div class="d-flex justify-content-end">
+                <legend></legend>
+                <select name="sort">
+                    <option value="surname_asc" <?php if ($sort == 'surname_asc') echo 'selected' ?>>Surname A-Z
+                    </option>
+                    <option value="surname_desc" <?php if ($sort == 'surname_desc') echo 'selected' ?>>Surname Z-A
+                    </option>
+                </select>
+                <button type="submit">sort</button>
+            </div>
         </fieldset>
     </form>
 
 
-
+    <h3>ACCOUNTS LIST</h3>
     <?php foreach($users as $user): ?>
 
-    <table class="table">
+    <table class="table ">
         <thead>
             <tr>
-
                 <th scope="col"><b>ID</b></th>
                 <th scope="col"><b>Name</b></th>
                 <th scope="col"><b>Surname</b></th>
@@ -81,7 +84,11 @@ elseif ($sort == 'surname_desc') {
                 <td><?= $user['surname'] ?></td>
                 <td><?= $user['personal_code'] ?></td>
                 <td><?= $user['acc_balance'] ?> Eur</td>
-                <td><button type="submit" class="btn btn-outline-danger">Delete</button></td>
+                <td>
+                    <form action="http://localhost:8080/ciupakabros/php_u2_hw/delete.php?id=<?= $user['user_id'] ?>"
+                        method="post">
+                        <button type="submit" class="btn btn-outline-danger">delete</button>
+                </td>
                 <td><a href="http://localhost:8080/ciupakabros/php_u2_hw/addfunds.php?id=<?= $user['user_id'] ?>"
                         class="btn btn-primary d-inline">Add funds</a></td>
                 <td> <a href="http://localhost:8080/ciupakabros/php_u2_hw/withdrawfunds.php?id=<?= $user['user_id'] ?>"
@@ -89,6 +96,8 @@ elseif ($sort == 'surname_desc') {
             </tr>
         </tbody>
     </table>
+
+
 
     <?php endforeach ?>
 

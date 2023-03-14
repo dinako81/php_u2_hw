@@ -50,31 +50,31 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 <body>
     <?php require __DIR__ . '/menu.php' ?>
+    <h3>ADD NEW ACCOUNT:</h3>
+
 
     <form action="" method="post">
-        <fieldset>
-            <legend>ADD NEW ACCOUNT:</legend>
-            <div class="col-3">
-                <label>Name: </label>
-                <input type="text" name="name">
-            </div>
-            <div class="col-3">
-                <label>Surname: </label>
-                <input type="text" name="surname">
-            </div>
-            <div class="col-3">
-                <label>Personal code: </label>
-                <input type="text" name="personal_code">
-            </div>
-            <div class="col-3">
-                <label>Account number: </label>
-                <input type="text" name="acc_number">
-            </div>
-            <div class="col-3 visually-hidden">
-                <label>Account balance: </label>
-                <input type="text" name="acc_balance">
-            </div>
-            <button type="submit" class="btn btn-success">ADD</button>
+        <div class="col-md-3">
+            <label class="form-label">Name: </label>
+            <input type="text" name="name" class="form-control" placeholder="Name">
+        </div>
+        <div class="col-md-3">
+            <label class="form-label">Surname: </label>
+            <input type="text" name="surname" class="form-control" placeholder="Surname">
+        </div>
+        <div class="col-md-3">
+            <label class="form-label">Personal code: </label>
+            <input type="text" name="personal_code" class="form-control" placeholder="Personal code">
+        </div>
+        <div class="col-md-3">
+            <label class="form-label">Account number: </label>
+            <input type="text" name="acc_number" class="form-control" placeholder="Account number">
+        </div>
+        <div class="col-md-3 visually-hidden">
+            <label>Account balance: </label>
+            <input type="number" name="acc_balance">
+        </div>
+        <button type="submit" class="btn btn-success">ADD</button>
         </fieldset>
 
     </form>

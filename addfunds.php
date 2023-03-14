@@ -73,18 +73,15 @@ if (!$find) {
 
 <body>
     <?php require __DIR__ . '/menu.php' ?>
-
+    <h3>ADD FUNDS:</h3>
     <form action="?id=<?= $user['user_id'] ?>" method="post">
         <fieldset>
-            <legend>ADD FUNDS:</legend>
-            <div>Name: <?= $user['name'] ?></div>
-            <div>Surname: <?= $user['surname'] ?></div>
-            <div>Account balance: <?= $user['acc_balance'] ?></div>
-
-
-            <label>Add funds: </label>
-            <input type="text" name="acc_balance">
-            <button type="submit">Add funds</button>
+            <div>Name:<b> <?= $user['name'] ?></b></div>
+            <div>Surname: <b><?= $user['surname'] ?></b></div>
+            <div>Account balance: <b><?= $user['acc_balance'] ?></b>Eur</div>
+            <label>Add funds:</label>
+            <input type="text" name="acc_balance" placeholder="euro">
+            <button type="submit" class="btn btn-success">Add funds</button>
         </fieldset>
 
     </form>
