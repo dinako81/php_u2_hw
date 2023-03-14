@@ -1,6 +1,10 @@
 <?php
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    //surasyti validacijas
+    // if ($_POST['name']) maziau 3 raidziu nuderektinam i create
+
+
 
     $id = json_decode(file_get_contents(__DIR__ . '/id.json'));
     $id++;
@@ -11,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         'name' => $_POST['name'],
         'surname' => $_POST['surname'],
         'personal_code' => $_POST['personal_code'],
-        'account_number' => $_POST['account_number'],
+        'acc_number' => $_POST['acc_number'],
 
 
     ];
@@ -50,14 +54,26 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <form action="" method="post">
         <fieldset>
             <legend>ADD NEW ACCOUNT:</legend>
-            <label>Name: </label>
-            <input type="text" name="name">
-            <label>Surname: </label>
-            <input type="text" name="surname">
-            <label>Personal code: </label>
-            <input type="text" name="personal_code">
-            <label>Account number: </label>
-            <input type="text" name="account_number">
+            <div class="col-3">
+                <label>Name: </label>
+                <input type="text" name="name">
+            </div>
+            <div class="col-3">
+                <label>Surname: </label>
+                <input type="text" name="surname">
+            </div>
+            <div class="col-3">
+                <label>Personal code: </label>
+                <input type="text" name="personal_code">
+            </div>
+            <div class="col-3">
+                <label>Account number: </label>
+                <input type="text" name="acc_number">
+            </div>
+            <div class="col-3 visually-hidden">
+                <label>Account balance: </label>
+                <input type="text" name="acc_balance">
+            </div>
             <button type="submit" class="btn btn-success">ADD</button>
         </fieldset>
 

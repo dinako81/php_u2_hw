@@ -9,7 +9,7 @@ function getUnique($to){
  return $id;
 }
 
-$users = array_map(fn($_)=>['user_id' => getUnique(30), 'place_in_row' => rand(1,100)], range (1, 30));
+$users = array_map(fn($_)=>['user_id' => getUnique(20)], range (1, 5));
 
 echo '<pre>';
 print_r($users);
@@ -20,8 +20,6 @@ usort($users, fn($a, $b) => $a['user_id'] <=> $b['user_id']);
 echo '<pre>';
 print_r($users);
 echo '<br>';
-
-usort($users, fn($a, $b) => $b['place_in_row'] <=> $a['place_in_row']);
 
 
 function randString()
@@ -37,49 +35,12 @@ function randString()
 $users = array_map(function($user) {
     $user['name'] = randString();
     $user['surname'] = randString();
+    $user['personal_code'] = randString();
+    $user['acc_number'] = randString();
+    $user['acc_balance'] = 0;
     return $user;
 }, $users);
 
-file_put_contents(__DIR__ . '/users.ser', serialize($users));
-
-echo '<pre>';
-print_r($users);
-
-$users = array_map(function($user) {
-    $user['balance_amount'] = randString('');
-    return $user;
-}, $users);
-
-file_put_contents(__DIR__ . '/users.ser', serialize($users));
-
-echo '<pre>';
-print_r($users);
-
-
-$users = array_map(function($user) {
-    $user['personal_code'] = randString('');
-    return $user;
-}, $users);
-
-file_put_contents(__DIR__ . '/users.ser', serialize($users));
-
-echo '<pre>';
-print_r($users);
-
-$users = array_map(function($user) {
-    $user['account_number'] = randString('');
-    return $user;
-}, $users);
-
-file_put_contents(__DIR__ . '/users.ser', serialize($users));
-
-echo '<pre>';
-print_r($users);
-
-$users = array_map(function($user) {
-    $user['initial_amount'] = randString('');
-    return $user;
-}, $users);
 
 file_put_contents(__DIR__ . '/users.ser', serialize($users));
 

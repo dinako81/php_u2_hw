@@ -72,8 +72,8 @@ elseif ($sort == 'surname_desc') {
                 <?= $user['surname'] ?>
             </div>
             <div>
-                <b>Amount:</b>
-                <?= $user['amount'] ?>
+                <b>Account balance:</b>
+                <?= $user['acc_balance'] ?>
             </div>
             <form action="http://localhost:8080/ciupakabros/php_u2_hw/delete.php?id=<?= $user['user_id'] ?>"
                 method="post">
