@@ -37,11 +37,11 @@ $users = unserialize(file_get_contents(__DIR__ . '/users.ser'));
             </div>
             <div class="col-3">
                 <label>Account balance: </label>
-                <input type="number" name="account_balance" value="<?= $user['acc_balance'] ?>">
+                <input type="number" name="acc_balance" value="<?= $user['acc_balance'] ?>">
             </div>
             <div class="col-3">
                 <label>Deduct funds: </label>
-                <input type="number" name="put_amount" value="<?= $user['put_amount'] ?>">
+                <input type="number" name="acc_balance" value="<?= $user['acc_balance'] ?>">
             </div>
             <button type="submit" class="btn btn-success">Deduct funds</button>
         </fieldset>

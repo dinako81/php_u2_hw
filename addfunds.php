@@ -1,19 +1,27 @@
 <?php
-$users = unserialize(file_get_contents(__DIR__ . '/users.ser'));
 
-foreach($users as &$user) {
-    if ($user['user_id'] == $id) {
-        
-        $user['acc_balance'] = $_POST['acc_balance'] + $user['acc_balance'];
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-        $users = serialize($users);
-        file_put_contents(__DIR__ . '/users.ser', $users);
-        break;
+    $id = (int) $_GET['id'];
+    $users = unserialize(file_get_contents(__DIR__ . '/users.ser'));
+
+    // tikrinam-reikes padaryti
+   
+    foreach($users as &$user) {
+        if ($user['user_id'] == $id) {
+            $user['acc_balance'] = $_POST['ass_balance'] + $user['acc_balance'];
+           
+            $users = serialize($users);
+            file_put_contents(__DIR__ . '/users.ser', $users);
+
+            break;
+        }
     }
+    header('Location: http://localhost:8080/ciupakabros/php_u2_hw/users.php?page=home&sort=');
+    die;
 }
 
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -32,6 +40,12 @@ foreach($users as &$user) {
 
     <?php require __DIR__ . '/menu.php' ?>
 
+    <!-- <div>
+        <b>Name:</b> <i><?= $user['name'] ?> </i>
+        <b>Surname:</b> <?= $user['surname'] ?>
+        <b>Account balance:</b><?= $user['acc_balance'] ?>
+    </div> -->
+
     <form action="?id=<?= $user['user_id'] ?>" method="post">
         <fieldset>
             <legend>ADD FUNDS:</legend>
@@ -39,17 +53,13 @@ foreach($users as &$user) {
                 <label>Name: </label>
                 <input type="text" name="name" value="<?= $user['name'] ?>">
             </div>
-            <div class="col-3">
+            <div class=" col-3">
                 <label>Surname: </label>
                 <input type="text" name="surname" value="<?= $user['surname'] ?>">
             </div>
             <div class="col-3">
                 <label>Account balance: </label>
-                <input type="number" name="acc_balance" value="<?= $user['acc_balance'] ?>">
-            </div>
-            <div class="col-3">
-                <label>Add funds: </label>
-                <input type="number" name="acc_balance" value="<?= $user['acc_balance'] ?>">
+                <input type="number" name=acc_balance value="<?= $user['acc_balance'] ?>">
             </div>
             <button type="submit" class="btn btn-success">Add funds</button>
         </fieldset>
