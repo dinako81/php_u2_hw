@@ -1,6 +1,10 @@
 <?php
 $users = unserialize(file_get_contents(__DIR__ . '/users.ser'));
 
+echo '<pre>';
+
+var_dump($users);
+
 $page = (int) ($_GET['page'] ?? 1);
 
 $sort = $_GET['sort'] ?? '';
@@ -50,40 +54,46 @@ elseif ($sort == 'surname_desc') {
             <button type="submit">sort</button>
         </fieldset>
     </form>
-    <ul>
 
 
-        <?php foreach($users as $user): ?>
+
+    <?php foreach($users as $user): ?>
+
+    <table class="table">
+        <thead>
+            <tr>
+
+                <th scope="col"><b>ID</b></th>
+                <th scope="col"><b>Name</b></th>
+                <th scope="col"><b>Surname</b></th>
+                <th scope="col"><b>Personal code</b></th>
+                <th scope="col"><b>Account balance</b></th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+
+                <td><?= $user['user_id'] ?></td>
+                <td><?= $user['name'] ?></td>
+                <td><?= $user['surname'] ?></td>
+                <td><?= $user['personal_code'] ?></td>
+                <td><?= $user['acc_balance'] ?> Eur</td>
+                <td><button type="submit" class="btn btn-outline-danger">Delete</button></td>
+                <td><a href="http://localhost:8080/ciupakabros/php_u2_hw/addfunds.php?id=<?= $user['user_id'] ?>"
+                        class="btn btn-primary d-inline">Add funds</a></td>
+                <td> <a href="http://localhost:8080/ciupakabros/php_u2_hw/withdrawfunds.php?id=<?= $user['user_id'] ?>"
+                        class="btn btn-primary d-inline">Withdraw funds</a> </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <?php endforeach ?>
 
 
-        <li>
-            <b>ID:</b>
-            <?= $user['user_id'] ?>
-            <div>
-                <b>Personal code:</b> <i><?= $user['personal_code'] ?> </i>
-            </div>
-            <div>
-                <b>Name:</b><i><?= $user['name'] ?> </i>
-            </div>
-            <div>
-                <b>Surname:</b><?= $user['surname'] ?>
-            </div>
-            <div>
-                <b>Account balance:</b><?= $user['acc_balance'] ?>
-            </div>
-            <form action="http://localhost:8080/ciupakabros/php_u2_hw/delete.php?id=<?= $user['user_id'] ?>"
-                method="post">
-                <button type="submit" class="btn btn-outline-danger">delete</button>
 
-            </form>
-
-            <a href="http://localhost:8080/ciupakabros/php_u2_hw/addfunds.php?id=<?= $user['user_id'] ?>"
-                class="btn btn-primary">Add funds</a>
-            <a href="http://localhost:8080/ciupakabros/php_u2_hw/withdrawfunds.php?id=<?= $user['user_id'] ?>"
-                class="btn btn-primary">Withdraw funds</a>
-        </li>
-        <?php endforeach ?>
-    </ul>
 </body>
 
 </html>

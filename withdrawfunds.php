@@ -18,7 +18,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     //     }
     // }
 
-
     foreach($users as &$user) {
         if ($user['user_id'] == $id) {
             $user['acc_balance'] =$user['acc_balance'] - $_POST['acc_balance'];
