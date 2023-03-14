@@ -60,28 +60,27 @@ elseif ($sort == 'surname_desc') {
             <b>ID:</b>
             <?= $user['user_id'] ?>
             <div>
-                <b>Personal code:</b>
-                <i><?= $user['personal_code'] ?> </i>
+                <b>Personal code:</b> <i><?= $user['personal_code'] ?> </i>
             </div>
             <div>
-                <b>Name:</b>
-                <i><?= $user['name'] ?> </i>
+                <b>Name:</b><i><?= $user['name'] ?> </i>
             </div>
             <div>
-                <b>Surname:</b>
-                <?= $user['surname'] ?>
+                <b>Surname:</b><?= $user['surname'] ?>
             </div>
             <div>
-                <b>Account balance:</b>
-                <?= $user['acc_balance'] ?>
+                <b>Account balance:</b><?= $user['acc_balance'] ?>
             </div>
             <form action="http://localhost:8080/ciupakabros/php_u2_hw/delete.php?id=<?= $user['user_id'] ?>"
                 method="post">
                 <button type="submit" class="btn btn-outline-danger">delete</button>
-                <a href="http://localhost:8080/ciupakabros/php_u2_hw/addfunds.php" class="btn btn-primary">Add funds</a>
-                <a href="http://localhost:8080/ciupakabros/php_u2_hw/deductfunds.php" class="btn btn-primary">Deduct
-                    funds</a>
+
             </form>
+
+            <a href="http://localhost:8080/ciupakabros/php_u2_hw/addfunds.php?id=<?= $user['user_id'] ?>"
+                class="btn btn-primary">Add funds</a>
+            <a href="http://localhost:8080/ciupakabros/php_u2_hw/withdrawfunds.php?id=<?= $user['user_id'] ?>"
+                class="btn btn-primary">Withdraw funds</a>
         </li>
         <?php endforeach ?>
     </ul>

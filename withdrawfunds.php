@@ -1,10 +1,7 @@
 <?php
-
-
 $id = (int) $_GET['id'];
     $users = unserialize(file_get_contents(__DIR__ . '/users.ser'));
-
-    
+  
 // POST scenarijus
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // session_start();
@@ -24,7 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     foreach($users as &$user) {
         if ($user['user_id'] == $id) {
-            $user['acc_balance'] = $_POST['acc_balance']+$user['acc_balance'];
+            $user['acc_balance'] =$user['acc_balance'] - $_POST['acc_balance'];
 
             $users = serialize($users);
             file_put_contents(__DIR__ . '/users.ser', $users);
@@ -56,7 +53,6 @@ if (!$find) {
     die('User not found');
 }
 
-
 ?>
 
 
@@ -68,7 +64,7 @@ if (!$find) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add funds</title>
+    <title>Withdraw funds</title>
 </head>
 
 <body>
@@ -76,7 +72,7 @@ if (!$find) {
 
     <form action="?id=<?= $user['user_id'] ?>" method="post">
         <fieldset>
-            <legend>ADD FUNDS:</legend>
+            <legend>WITHDRAW FUNDS:</legend>
             <div>Name: <?= $user['name'] ?></div>
             <div>Surname: <?= $user['surname'] ?></div>
             <div>Account balance: <?= $user['acc_balance'] ?></div>
@@ -84,7 +80,7 @@ if (!$find) {
 
             <label>Add funds: </label>
             <input type="text" name="acc_balance">
-            <button type="submit">Add funds</button>
+            <button type="submit">Withdraw funds</button>
         </fieldset>
 
     </form>
