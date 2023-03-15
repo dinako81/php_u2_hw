@@ -85,8 +85,6 @@ elseif ($sort == 'surname_desc') {
                 <td><?= $user['surname'] ?></td>
                 <td><?= $user['personal_code'] ?></td>
                 <td><?= $user['acc_number'] ?></td>
-                <?= var_dump($user) ?>
-
                 <td><?= $user['acc_balance'] ?> Eur</td>
                 <td>
                     <form action="http://localhost:8080/ciupakabros/php_u2_hw/delete.php?id=<?= $user['user_id'] ?>"
