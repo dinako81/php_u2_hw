@@ -5,6 +5,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // if ($_POST['name']) maziau 3 raidziu nuderektinam i create
 
 
+    // $personal_code = uniqid('my_prefix_', true);
+// echo $personal_code;
+
+
 
     $id = json_decode(file_get_contents(__DIR__ . '/id.json'));
     $id++;
@@ -16,6 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         'surname' => $_POST['surname'],
         'personal_code' => $_POST['personal_code'],
         'acc_number' => $_POST['acc_number'],
+        'acc_balance' => $_POST['acc_balance'],
 
 
     ];
@@ -69,10 +74,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <div class="col-md-3">
             <label class="form-label">Account number: </label>
             <input type="text" name="acc_number" class="form-control" placeholder="Account number">
+            <!-- <?= $user['acc_number'] ?> -->
         </div>
         <div class="col-md-3 visually-hidden">
             <label>Account balance: </label>
-            <input type="number" name="acc_balance">
+            <input type="number" name="acc_balance" value="0">
         </div>
         <button type="submit" class="btn btn-success">ADD</button>
         </fieldset>

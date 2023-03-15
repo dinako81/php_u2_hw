@@ -70,6 +70,7 @@ elseif ($sort == 'surname_desc') {
                 <th scope="col"><b>Name</b></th>
                 <th scope="col"><b>Surname</b></th>
                 <th scope="col"><b>Personal code</b></th>
+                <th scope="col"><b>Account number</b></th>
                 <th scope="col"><b>Account balance</b></th>
                 <th scope="col"></th>
                 <th scope="col"></th>
@@ -83,6 +84,9 @@ elseif ($sort == 'surname_desc') {
                 <td><?= $user['name'] ?></td>
                 <td><?= $user['surname'] ?></td>
                 <td><?= $user['personal_code'] ?></td>
+                <td><?= $user['acc_number'] ?></td>
+                <?= var_dump($user) ?>
+
                 <td><?= $user['acc_balance'] ?> Eur</td>
                 <td>
                     <form action="http://localhost:8080/ciupakabros/php_u2_hw/delete.php?id=<?= $user['user_id'] ?>"
