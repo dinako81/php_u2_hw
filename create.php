@@ -1,15 +1,25 @@
 <?php
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    session_start();
+    $users = unserialize(file_get_contents(__DIR__ . '/users.ser'));
     //surasyti validacijas
     // if ($_POST['name']) maziau 3 raidziu nuderektinam i create
 
 
     // $personal_code = uniqid('my_prefix_', true);
-// echo $personal_code;
+    // echo $personal_code;
 
-
-
+     //  tikrinam ar personal code unique
+     foreach($users as $user) {
+        if ($user['personal_code'] == $_POST['personal_code']) {
+            $_SESSION['msg'] = ['type' => 'error', 'text' => 'Personal code is not unique'];
+            header('Location: http://localhost:8080/ciupakabros/php_u2_hw/create.php');
+            die;
+        }
+    }
+    //reikia papildyti, kad gavus pranesima ape klaida grazintu i pildoma forma su jau ivesta info. paimam informacija is sesijos ir perkialiame i laukelius
+    
     $id = json_decode(file_get_contents(__DIR__ . '/id.json'));
     $id++;
     file_put_contents(__DIR__ . '/id.json', json_encode($id));
@@ -21,8 +31,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         'personal_code' => $_POST['personal_code'],
         'acc_number' => $_POST['acc_number'],
         'acc_balance' => $_POST['acc_balance'],
-
-
     ];
 
     $users = unserialize(file_get_contents(__DIR__ . '/users.ser'));
@@ -32,13 +40,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $users = serialize($users);
     file_put_contents(__DIR__ . '/users.ser', $users);
 
+    $_SESSION['msg'] = ['type' => 'ok', 'text' => 'User was created'];
     header('Location: http://localhost:8080/ciupakabros/php_u2_hw/users.php?sort=id_desc');
     die;
 }
 
 ?>
-
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -50,13 +57,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="./css/style.css">
     <title>Create</title>
-
 </head>
 
 <body>
     <?php require __DIR__ . '/menu.php' ?>
     <h3>ADD NEW ACCOUNT:</h3>
-
 
     <form action="" method="post">
         <div class="col-md-3">
@@ -73,7 +78,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         </div>
         <div class="col-md-3">
             <label class="form-label">Account number: </label>
-            <input type="text" name="acc_number" class="form-control" placeholder="Account number">
+            <input readonly type="text" name="acc_number" class="form-control" placeholder="Account number">
             <!-- <?= $user['acc_number'] ?> -->
         </div>
         <div class="col-md-3 visually-hidden">
@@ -82,9 +87,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         </div>
         <button type="submit" class="btn btn-success">ADD</button>
         </fieldset>
-
     </form>
-
 
 </body>
 

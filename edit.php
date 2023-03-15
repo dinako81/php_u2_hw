@@ -27,8 +27,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 ?>
 
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -37,37 +35,33 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Create</title>
-    
 </head>
 
 <body>
     <?php require __DIR__ . '/menu.php' ?>
-    
+
     <form action="" method="post">
         <fieldset>
             <legend>ADD NEW ACCOUNT:</legend>
             <div>
-            <label>personal code: </label>
-            <input type="text" name="personal code">
+                <label>personal code: </label>
+                <input type="text" name="personal code">
             </div>
             <div>
-            <label>name: </label>
-            <input type="text" name="name">
+                <label>name: </label>
+                <input type="text" name="name">
             </div>
             <div>
-            <label>surname: </label>
-            <input type="text" name="surname"> 
+                <label>surname: </label>
+                <input type="text" name="surname">
             </div>
             <div>
-            <label>account number: </label>
-            <input type="text" name="account_number">
+                <label>account number: </label>
+                <input type="text" name="account_number">
             </div>
             <button type="submit">ADD</button>
         </fieldset>
-
     </form>
-
-
 </body>
 
 </html>

@@ -1,10 +1,6 @@
 <?php
 $users = unserialize(file_get_contents(__DIR__ . '/users.ser'));
 
-// echo '<pre>';
-
-// var_dump($users);
-
 $page = (int) ($_GET['page'] ?? 1);
 
 $sort = $_GET['sort'] ?? '';
@@ -15,18 +11,7 @@ if ($sort == 'surname_asc') {
 elseif ($sort == 'surname_desc') {
     usort($users, fn($a, $b) => $b['surname'] <=> $a['surname']);
 }
-// elseif ($sort == 'id_asc') {
-//     usort($users, fn($a, $b) => $a['user_id'] <=> $b['user_id']);
-// }
-// elseif ($sort == 'id_desc') {
-//     usort($users, fn($a, $b) => $b['user_id'] <=> $a['user_id']);
-// }
-
-// $users = array_slice($users, ($page - 1) * 10, 10);
-
-
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -38,7 +23,6 @@ elseif ($sort == 'surname_desc') {
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="./css/style.css">
     <title>users</title>
-
 </head>
 
 <body>
@@ -59,10 +43,8 @@ elseif ($sort == 'surname_desc') {
         </fieldset>
     </form>
 
-
     <h3>ACCOUNTS LIST</h3>
     <?php foreach($users as $user): ?>
-
     <table class="table ">
         <thead>
             <tr>
@@ -79,7 +61,6 @@ elseif ($sort == 'surname_desc') {
         </thead>
         <tbody>
             <tr>
-
                 <td><?= $user['user_id'] ?></td>
                 <td><?= $user['name'] ?></td>
                 <td><?= $user['surname'] ?></td>
@@ -98,12 +79,7 @@ elseif ($sort == 'surname_desc') {
             </tr>
         </tbody>
     </table>
-
-
-
     <?php endforeach ?>
-
-
 
 </body>
 
