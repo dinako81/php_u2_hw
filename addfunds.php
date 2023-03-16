@@ -17,7 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         }
     }
     $_SESSION['msg'] = ['type' => 'ok', 'text' => 'Funds was added!'];
-    header('Location: http://localhost:8080/ciupakabros/php_u2_hw/users.php');
+    header('Location: http://localhost:8080/ciupakabros/php_u2_hw/addfunds.php?id='. $_GET['id']);
     die;
 }
 
@@ -55,7 +55,7 @@ if (!$find) {
         <fieldset>
             <div>Name:<b> <?= $user['name'] ?></b></div>
             <div>Surname: <b><?= $user['surname'] ?></b></div>
-            <div>Account balance: <b><?= $user['acc_balance'] ?></b>Eur</div>
+            <div>Account balance: <b><?= number_format($user['acc_balance'], 2, ',', ' ') ?></b>Eur</div>
             <label>Add funds:</label>
             <input type="text" name="acc_balance" placeholder="euro" step="0.01">
             <button type="submit" class="btn btn-success">Add funds</button>

@@ -1,4 +1,6 @@
 <?php
+
+session_start();
 $users = unserialize(file_get_contents(__DIR__ . '/users.ser'));
 
 $page = (int) ($_GET['page'] ?? 1);
@@ -11,6 +13,8 @@ if ($sort == 'surname_asc') {
 elseif ($sort == 'surname_desc') {
     usort($users, fn($a, $b) => $b['surname'] <=> $a['surname']);
 }
+
+
 ?>
 
 <!DOCTYPE html>
@@ -69,10 +73,10 @@ elseif ($sort == 'surname_desc') {
                 <td><?= $user['surname'] ?></td>
                 <td><?= $user['personal_code'] ?></td>
                 <td><?= $user['acc_number'] ?></td>
-                <td><?= $user['acc_balance'] ?> Eur</td>
+                <td><?= number_format($user['acc_balance'], 2, ',', ' ') ?> Eur</td>
                 <td>
-                    <form action="http://localhost:8080/ciupakabros/php_u2_hw/delete.php?id=<?= $user['user_id'] ?>"
-                        method="post">
+                    <form action="http://localhost:8080/ciupakabros/php_u2_hw/delete.php" method="post">
+                        <input type="hidden" name="user_id" value="<?= $user['user_id'] ?>">
                         <button type="submit" class="btn btn-outline-danger">delete</button>
                     </form>
                 </td>

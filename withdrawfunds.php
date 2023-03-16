@@ -1,40 +1,35 @@
 <?php
-$id = (int) $_GET['id'];
-    $users = unserialize(file_get_contents(__DIR__ . '/users.ser'));
-  
+ session_start();
+   
 // POST scenarijus
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    session_start();
-
+    
     $id = (int) $_GET['id'];
     $users = unserialize(file_get_contents(__DIR__ . '/users.ser'));
 
     foreach($users as &$user) {
         if ($user['user_id'] == $id) {
-            $user['acc_balance'] =$user['acc_balance'] - $_POST['acc_balance'];
-            $users = serialize($users);
-            file_put_contents(__DIR__ . '/users.ser', $users);
-            break;
-        }
-    }
-    
-    //surasyti scenariju pridejimo msg OK/NOT ok
-    // foreach($users as $user) {
-    //     if ($user['acc_balance'] < $_POST['acc_balance']) {
-    //         $_SESSION['msg'] = ['type' => 'error', 'text' => 'There are not enough funds in the account'];
-    //         header('Location: http://localhost:8080/ciupakabros/php_u2_hw/withdrawfunds.php');
-    //         die;
-    //     }
-    // }
-
-    $_SESSION['msg'] = ['type' => 'ok', 'text' => 'Funds was withdrawed!'];
-    header('Location: http://localhost:8080/ciupakabros/php_u2_hw/users.php');
-    die;
+            if ($_POST['acc_balance'] > $user['acc_balance']) {
+                $_SESSION['msg'] = ['type' => 'error', 'text' => 'There are not enough funds in the account'];
+                header('Location: http://localhost:8080/ciupakabros/php_u2_hw/withdrawfunds.php?id='. $_GET['id']);
+                die;
+            } else {
+                $user['acc_balance'] = $user['acc_balance'] - $_POST['acc_balance'];
+                $_SESSION['msg'] = ['type' => 'ok', 'text' => 'Funds was withdrawed!'];
+                $users = serialize($users);
+                file_put_contents(__DIR__ . '/users.ser', $users); 
+                header('Location: http://localhost:8080/ciupakabros/php_u2_hw/withdrawfunds.php?id='. $_GET['id'] );
+                die;
+            }
+        }   
+    }  
 }
 //GET scenarijus
 $users = unserialize(file_get_contents(__DIR__ . '/users.ser'));
-
 $id = (int) $_GET['id'];
+ 
+
+
 
 $find = false;
 foreach($users as $user) {
@@ -67,7 +62,7 @@ if (!$find) {
         <fieldset>
             <div>Name: <?= $user['name'] ?></div>
             <div>Surname: <?= $user['surname'] ?></div>
-            <div>Account balance: <?= $user['acc_balance'] ?> Eur</div>
+            <div>Account balance: <?= number_format($user['acc_balance'], 2, ',', ' ') ?> Eur</div>
             <label>Add funds: </label>
             <input type="text" name="acc_balance" placeholder="euro">
             <button type="submit">Withdraw funds</button>

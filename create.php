@@ -1,27 +1,23 @@
 <?php
  session_start();
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    session_start();
+    
     $users = unserialize(file_get_contents(__DIR__ . '/users.ser'));
 
      foreach($users as $user) {
-        if ($user['personal_code'] == $_POST['personal_code']) {
+        if ($_POST['ak'] ?? ''){
+            if ($user['personal_code'] == $_POST['personal_code']) {
             $_SESSION['msg'] = ['type' => 'error', 'text' => 'Personal code is not unique'];
+            header('Location: http://localhost:8080/ciupakabros/php_u2_hw/create.php');
+            die;}
+        }
+        if (strlen($_POST['name']) < 3 || strlen($_POST['surname']) < 3) {
+            $_SESSION['msg'] = ['type' => 'error', 'text' => 'Name or surname is too short'];
             header('Location: http://localhost:8080/ciupakabros/php_u2_hw/create.php');
             die;
         }
-        // if ((strlen($user['user_name']) < 3) && (strlen($user['user_name']) < 3 simbols){
-        //     $_SESSION['msg'] = ['type' => 'error', 'text' => 'Name or surname is incorrect'];
-        //     header('Location: http://localhost:8080/ciupakabros/php_u2_hw/create.php');
-        //     die;
-        // }
-
-        //if ($user['user_name'] && $user['user_surname']  < ne raides){
-        // $_SESSION['msg'] = ['type' => 'error', 'text' => 'Name or surname is incorrect'];
-        //     header('Location: http://localhost:8080/ciupakabros/php_u2_hw/create.php');
-        //     die;
-        // }
     }
+   
     //reikia papildyti, kad gavus pranesima ape klaida grazintu i pildoma forma su jau ivesta info. paimam informacija is sesijos ir perkialiame i laukelius
     
     $id = json_decode(file_get_contents(__DIR__ . '/id.json'));

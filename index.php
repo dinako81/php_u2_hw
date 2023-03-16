@@ -10,12 +10,4 @@ function getUnique($to)
     return $id;
 }
 
-// $users = array_map(fn($_)=>['user_id' => getUnique(20)], range (1, 5));
-
 usort($users, fn($a, $b) => $a['user_id'] <=> $b['user_id']);
-
-echo '<pre>';
-print_r($users);
-
-// $personal_code = uniqid('my_prefix_', true);
-// echo $personal_code;

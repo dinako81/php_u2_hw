@@ -1,12 +1,12 @@
 <?php
 session_start();
 
-if ($_SERVER['REQUEST_METHOD'] != 'POST' || !isset($_GET['id'])) {
+if ($_SERVER['REQUEST_METHOD'] != 'POST') {
     http_response_code(400);
     die;
 }
 
-$id = (int) $_GET['id'];
+$id = (int) $_POST['user_id'];
 $users = unserialize(file_get_contents(__DIR__ . '/users.ser'));
 
 foreach($users as $user) {
@@ -25,11 +25,3 @@ foreach($users as $user) {
     }
 }
 }
-
-
-
-
-
-
-
-//neveikia delitinimas su salygom...
