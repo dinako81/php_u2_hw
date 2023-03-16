@@ -74,6 +74,7 @@ elseif ($sort == 'surname_desc') {
                     <form action="http://localhost:8080/ciupakabros/php_u2_hw/delete.php?id=<?= $user['user_id'] ?>"
                         method="post">
                         <button type="submit" class="btn btn-outline-danger">delete</button>
+                    </form>
                 </td>
                 <td><a href="http://localhost:8080/ciupakabros/php_u2_hw/addfunds.php?id=<?= $user['user_id'] ?>"
                         class="btn btn-primary d-inline">Add funds</a></td>
