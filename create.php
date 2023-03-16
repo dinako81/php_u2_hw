@@ -1,22 +1,26 @@
 <?php
-
+ session_start();
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     session_start();
     $users = unserialize(file_get_contents(__DIR__ . '/users.ser'));
-    //surasyti validacijas
-    // if ($_POST['name']) maziau 3 raidziu nuderektinam i create
 
-
-    // $personal_code = uniqid('my_prefix_', true);
-    // echo $personal_code;
-
-     //  tikrinam ar personal code unique
      foreach($users as $user) {
         if ($user['personal_code'] == $_POST['personal_code']) {
             $_SESSION['msg'] = ['type' => 'error', 'text' => 'Personal code is not unique'];
             header('Location: http://localhost:8080/ciupakabros/php_u2_hw/create.php');
             die;
         }
+        // if ($user['user_name'] && $user['user_surname']< 3 simbols){
+        //     $_SESSION['msg'] = ['type' => 'error', 'text' => 'Name or surname is incorrect'];
+        //     header('Location: http://localhost:8080/ciupakabros/php_u2_hw/create.php');
+        //     die;
+        // }
+
+        //if ($user['user_name'] && $user['user_surname']  < ne raides){
+        // $_SESSION['msg'] = ['type' => 'error', 'text' => 'Name or surname is incorrect'];
+        //     header('Location: http://localhost:8080/ciupakabros/php_u2_hw/create.php');
+        //     die;
+        // }
     }
     //reikia papildyti, kad gavus pranesima ape klaida grazintu i pildoma forma su jau ivesta info. paimam informacija is sesijos ir perkialiame i laukelius
     
@@ -78,10 +82,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         </div>
         <div class="col-md-3">
             <label class="form-label">Account number: </label>
-            <input readonly type="text" name="acc_number" class="form-control" placeholder="Account number">
-            <!-- <?= $user['acc_number'] ?> -->
+            <input readonly type="text" name="acc_number" class="form-control" placeholder="Account number"
+                value="<?= 'LT' . rand(0, 9) . rand(0, 9) . ' ' . '0014' . ' ' . '7' . rand(0, 9) . rand(0, 9) . rand(0, 9) . ' ' . rand(0, 9) . rand(0, 9) . rand(0, 9) . rand(0, 9)  . ' ' . rand(0, 9) . rand(0, 9) . rand(0, 9) . rand(0, 9) ?>">
         </div>
-        <div class="col-md-3 visually-hidden">
+        <div class=" col-md-3 visually-hidden">
             <label>Account balance: </label>
             <input type="number" name="acc_balance" value="0">
         </div>

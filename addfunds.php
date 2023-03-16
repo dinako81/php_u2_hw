@@ -1,9 +1,10 @@
 <?php
-
+session_start();
 // POST scenarijus
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    session_start();
 
+    //validacija: negalima prideti raidziu
+    
     $id = (int) $_GET['id'];
     $users = unserialize(file_get_contents(__DIR__ . '/users.ser'));
     
@@ -56,7 +57,7 @@ if (!$find) {
             <div>Surname: <b><?= $user['surname'] ?></b></div>
             <div>Account balance: <b><?= $user['acc_balance'] ?></b>Eur</div>
             <label>Add funds:</label>
-            <input type="text" name="acc_balance" placeholder="euro">
+            <input type="text" name="acc_balance" placeholder="euro" step="0.01">
             <button type="submit" class="btn btn-success">Add funds</button>
         </fieldset>
     </form>
