@@ -44,7 +44,9 @@ elseif ($sort == 'surname_desc') {
     </form>
 
     <h3>ACCOUNTS LIST</h3>
+
     <?php foreach($users as $user): ?>
+
     <table class="table ">
         <thead>
             <tr>
@@ -60,6 +62,7 @@ elseif ($sort == 'surname_desc') {
             </tr>
         </thead>
         <tbody>
+
             <tr>
                 <td><?= $user['user_id'] ?></td>
                 <td><?= $user['name'] ?></td>

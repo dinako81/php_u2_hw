@@ -18,14 +18,17 @@ foreach($users as $user) {
     } else {
         $users = array_filter($users, fn($users) => $users['user_id'] != $id);
         $_SESSION['msg'] = ['type' => 'ok', 'text' => 'User was deleted'];
+        $users = serialize($users);
+        file_put_contents(__DIR__ . '/users.ser', $users);
+        header('Location: http://localhost:8080/ciupakabros/php_u2_hw/users.php');
+        die;
     }
 }
 }
 
-$users = serialize($users);
-file_put_contents(__DIR__ . '/users.ser', $users);
 
-header('Location: http://localhost:8080/ciupakabros/php_u2_hw/users.php');
+
+
 
 
 

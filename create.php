@@ -10,7 +10,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             header('Location: http://localhost:8080/ciupakabros/php_u2_hw/create.php');
             die;
         }
-        // if ($user['user_name'] && $user['user_surname']< 3 simbols){
+        // if ((strlen($user['user_name']) < 3) && (strlen($user['user_name']) < 3 simbols){
         //     $_SESSION['msg'] = ['type' => 'error', 'text' => 'Name or surname is incorrect'];
         //     header('Location: http://localhost:8080/ciupakabros/php_u2_hw/create.php');
         //     die;
