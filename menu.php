@@ -31,3 +31,17 @@
 <?php
 
 unset($_SESSION['msg']);
+
+?>
+
+<?php if (isset($_SESSION['logged']) && $_SESSION['logged'] == 1) : ?>
+<h3> <i>Hi</i> <?= $_SESSION['log_name'] ?> <i>!</i></h3>
+
+<div>
+    <form action="http://localhost:8080/ciupakabros/php_u2_hw/login/?logout" method="post">
+        <button type="submit">LOG OUT</button>
+    </form>
+</div>
+<?php else : ?>
+<a href="http://localhost:8080/ciupakabros/php_u2_hw/login/">LOGIN</a>
+<?php endif ?>

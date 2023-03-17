@@ -5,7 +5,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // 1 LOGOUT
     if (isset($_GET['logout'])) {
         unset($_SESSION['logged'], $_SESSION['log_name']);
-        header('Location: http://localhost8080:/ciupakabros/php_u2_hw/');
+        header('Location: http://localhost:8080/ciupakabros/php_u2_hw/login/');
         die;
     }
     
