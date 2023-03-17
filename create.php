@@ -61,34 +61,34 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 <body>
     <?php require __DIR__ . '/menu.php' ?>
-    <h3>ADD NEW ACCOUNT:</h3>
 
-    <form action="" method="post">
-        <div class="col-md-3">
-            <label class="form-label">Name: </label>
-            <input type="text" name="name" class="form-control" placeholder="Name">
-        </div>
-        <div class="col-md-3">
-            <label class="form-label">Surname: </label>
-            <input type="text" name="surname" class="form-control" placeholder="Surname">
-        </div>
-        <div class="col-md-3">
-            <label class="form-label">Personal code: </label>
-            <input type="text" name="personal_code" class="form-control" placeholder="Personal code">
-        </div>
-        <div class="col-md-3">
-            <label class="form-label">Account number: </label>
-            <input readonly type="text" name="acc_number" class="form-control" placeholder="Account number"
-                value="<?= 'LT' . rand(0, 9) . rand(0, 9) . ' ' . '0014' . ' ' . '7' . rand(0, 9) . rand(0, 9) . rand(0, 9) . ' ' . rand(0, 9) . rand(0, 9) . rand(0, 9) . rand(0, 9)  . ' ' . rand(0, 9) . rand(0, 9) . rand(0, 9) . rand(0, 9) ?>">
-        </div>
-        <div class=" col-md-3 visually-hidden">
-            <label>Account balance: </label>
-            <input type="number" name="acc_balance" value="0">
-        </div>
-        <button type="submit" class="btn btn-success">ADD</button>
-        </fieldset>
-    </form>
-
+    <div class="container">
+        <h3>ADD NEW ACCOUNT:</h3>
+        <form action="" method="post">
+            <div class="col-md-3">
+                <label class="form-label">Name: </label>
+                <input type="text" name="name" class="form-control" placeholder="Name">
+            </div>
+            <div class="col-md-3">
+                <label class="form-label">Surname: </label>
+                <input type="text" name="surname" class="form-control" placeholder="Surname">
+            </div>
+            <div class="col-md-3">
+                <label class="form-label">Personal code: </label>
+                <input type="text" name="personal_code" class="form-control" placeholder="Personal code">
+            </div>
+            <div class="col-md-3">
+                <label class="form-label">Account number: </label>
+                <input readonly type="text" name="acc_number" class="form-control" placeholder="Account number"
+                    value="<?= 'LT' . rand(0, 9) . rand(0, 9) . ' ' . '0014' . ' ' . '7' . rand(0, 9) . rand(0, 9) . rand(0, 9) . ' ' . rand(0, 9) . rand(0, 9) . rand(0, 9) . rand(0, 9)  . ' ' . rand(0, 9) . rand(0, 9) . rand(0, 9) . rand(0, 9) ?>">
+            </div>
+            <div class=" col-md-3 visually-hidden">
+                <label>Account balance: </label>
+                <input type="number" name="acc_balance" value="0">
+            </div>
+            <button type="submit" class="btn btn-success">ADD</button>
+        </form>
+    </div>
 </body>
 
 </html>

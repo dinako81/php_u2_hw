@@ -45,22 +45,29 @@ if (!$find) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/style.css">
     <title>Add funds</title>
 </head>
 
 <body>
     <?php require __DIR__ . '/menu.php' ?>
-    <h3>ADD FUNDS:</h3>
-    <form action="?id=<?= $user['user_id'] ?>" method="post">
-        <fieldset>
-            <div>Name:<b> <?= $user['name'] ?></b></div>
-            <div>Surname: <b><?= $user['surname'] ?></b></div>
-            <div>Account balance: <b><?= number_format($user['acc_balance'], 2, ',', ' ') ?></b>Eur</div>
-            <label>Add funds:</label>
-            <input type="text" name="acc_balance" placeholder="euro" step="0.01">
-            <button type="submit" class="btn btn-success">Add funds</button>
-        </fieldset>
-    </form>
+
+
+    <div class="container">
+        <h3>ADD FUNDS:</h3>
+        <form action="?id=<?= $user['user_id'] ?>" method="post">
+            <div class="col-md-3">Name:<b> <?= $user['name'] ?></b></div>
+            <div class="col-md-3">Surname: <b><?= $user['surname'] ?></b></div>
+            <div class="col-md-3">Account balance: <b><?= number_format($user['acc_balance'], 2, ',', ' ') ?></b>Eur
+            </div>
+            <div class="col-md-3">
+                <label>Add funds:</label>
+                <input type="text" name="acc_balance" placeholder="euro">
+            </div>
+            <button type="submit" class="btn btn-secondary">Add funds</button>
+        </form>
+    </div>
 </body>
 
 </html>

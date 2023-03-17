@@ -28,9 +28,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 $users = unserialize(file_get_contents(__DIR__ . '/users.ser'));
 $id = (int) $_GET['id'];
  
-
-
-
 $find = false;
 foreach($users as $user) {
     if ($user['user_id'] == $id) {
@@ -52,22 +49,29 @@ if (!$find) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/style.css">
     <title>WITHDRAW FUNDS</title>
+
 </head>
 
 <body>
     <?php require __DIR__ . '/menu.php' ?>
-    <h3>WITHDRAW FUNDS:</h3>
-    <form action="?id=<?= $user['user_id'] ?>" method="post">
-        <fieldset>
-            <div>Name: <?= $user['name'] ?></div>
-            <div>Surname: <?= $user['surname'] ?></div>
-            <div>Account balance: <?= number_format($user['acc_balance'], 2, ',', ' ') ?> Eur</div>
-            <label>Add funds: </label>
-            <input type="text" name="acc_balance" placeholder="euro">
-            <button type="submit">Withdraw funds</button>
-        </fieldset>
-    </form>
+
+    <div class="container">
+        <h3>WITHDRAW FUNDS:</h3>
+        <form action="?id=<?= $user['user_id'] ?>" method="post">
+            <div class="col-md-3"><b>Name:</b> <?= $user['name'] ?> </div>
+            <div class="col-md-3"><b>Surname:</b> <?= $user['surname'] ?></div>
+            <div class="col-md-3"><b>Account balance: </b> <?= number_format($user['acc_balance'], 2, ',', ' ') ?> Eur
+            </div>
+            <div class="col-md-3">
+                <label><b>Withdraw funds:</b> </label>
+                <input type="text" name="acc_balance" placeholder="euro">
+            </div>
+            <button type="submit" class="btn btn-secondary">Withdraw funds</button>
+        </form>
+    </div>
 </body>
 
 </html>
