@@ -60,10 +60,6 @@ if (!$find) {
     <link rel="stylesheet" href="./style.css">
     <title>WITHDRAW FUNDS</title>
     <style>
-    body {
-        background-color: #cccccc;
-    }
-
     h3,
     h6,
     h4,
@@ -91,12 +87,13 @@ if (!$find) {
                     <?= number_format($user['acc_balance'], 2, ',', ' ') ?> Eur
                 </div>
                 <div class="col-md-3 form-label">
-                    <label form-label><b>Withdraw funds:</b> </label>
+                    <label><b>Withdraw funds:</b> </label>
                     <input type="text" name="acc_balance" placeholder="euro">
                 </div>
                 <button type="submit" class="btn btn-secondary">Withdraw funds</button>
             </form>
         </div>
+    </div>
 </body>
 
 </html>
