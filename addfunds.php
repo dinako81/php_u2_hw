@@ -48,6 +48,22 @@ if (!$find) {
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="./css/style.css">
     <title>Add funds</title>
+    <style>
+    body {
+        background-color: #cccccc;
+    }
+
+    h3,
+    h6,
+    h4,
+    h5 {
+        margin: 50px;
+    }
+
+    .container {
+        margin-top: 50px;
+    }
+    </style>
 </head>
 
 <body>
@@ -55,18 +71,21 @@ if (!$find) {
 
 
     <div class="container">
-        <h3>ADD FUNDS:</h3>
-        <form action="?id=<?= $user['user_id'] ?>" method="post">
-            <div class="col-md-3">Name:<b> <?= $user['name'] ?></b></div>
-            <div class="col-md-3">Surname: <b><?= $user['surname'] ?></b></div>
-            <div class="col-md-3">Account balance: <b><?= number_format($user['acc_balance'], 2, ',', ' ') ?></b>Eur
-            </div>
-            <div class="col-md-3">
-                <label>Add funds:</label>
-                <input type="text" name="acc_balance" placeholder="euro">
-            </div>
-            <button type="submit" class="btn btn-secondary">Add funds</button>
-        </form>
+        <h3 class="row">ADD FUNDS:</h3>
+        <div class="row">
+            <form action="?id=<?= $user['user_id'] ?>" method="post">
+                <div class="col-md-3 form-label">Name:<b> <?= $user['name'] ?></b></div>
+                <div class="col-md-3 form-label">Surname: <b><?= $user['surname'] ?></b></div>
+                <div class="col-md-3 form-label">Account balance:
+                    <b><?= number_format($user['acc_balance'], 2, ',', ' ') ?></b>Eur
+                </div>
+                <div class="col-md-3">
+                    <label class="form-label">Add funds:</label>
+                    <input type="text" name="acc_balance" placeholder="euro">
+                </div>
+                <button type="submit" class="btn btn-secondary">Add funds</button>
+            </form>
+        </div>
     </div>
 </body>
 
