@@ -1,5 +1,6 @@
 <?php
 session_start();
+
 // POST scenarijus
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     
@@ -17,7 +18,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 $_SESSION['msg'] = ['type' => 'error', 'text' => 'The value should be only number!'];
                 header('Location: http://localhost:8080/ciupakabros/php_u2_hw/addfunds.php?id='. $_GET['id']);
                 die;
-            } else { $user['acc_balance'] = $user['acc_balance']+$_POST['acc_balance'];
+            } else { 
+            $user['acc_balance'] = $user['acc_balance']+$_POST['acc_balance'];
              $_SESSION['msg'] = ['type' => 'ok', 'text' => 'Funds was added!'];
             $users = serialize($users);
             file_put_contents(__DIR__ . '/users.ser', $users);

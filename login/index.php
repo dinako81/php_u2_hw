@@ -66,6 +66,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 
     img {
+        width: 300px;
+
         float: right;
     }
     </style>
@@ -93,9 +95,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <?php endif ?>
 
     <h4>Try to Login!</h4>
-    <div>
-        <img src="./img/27332181.jpg" alt="Zebras">
-    </div>
+
+    <img src="./img/zebra-bank.jpg" alt="Zebras">
+
     <div>
         <form action="" method="post">
             <div>
