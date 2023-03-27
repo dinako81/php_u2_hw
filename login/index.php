@@ -5,7 +5,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // 1 LOGOUT
     if (isset($_GET['logout'])) {
         unset($_SESSION['logged'], $_SESSION['log_name']);
-        header('Location: http://localhost:8080/ciupakabros/php_u2_hw/login/');
+        header('Location: http://localhost/ciupakabros/php_u2_hw/login/');
         die;
     }
     
@@ -15,12 +15,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         if ($user['log_name'] == $_POST['log_name'] && $user['psw'] == md5($_POST['psw'])) {
             $_SESSION['logged'] = 1;
             $_SESSION['log_name'] = $user['log_name'];
-            header('Location: http://localhost:8080/ciupakabros/php_u2_hw/users.php');
+            header('Location: http://localhost/ciupakabros/php_u2_hw/users.php');
             die;
         }
     }
     $_SESSION['msg'] = ['type' => 'error', 'text' => 'Login failed!'];
-    header('Location: http://localhost:8080/ciupakabros/php_u2_hw/login/');
+    header('Location: http://localhost/ciupakabros/php_u2_hw/login/');
     die;
 }
 

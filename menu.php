@@ -30,8 +30,6 @@
 <a style="margin-top: 20px" href="http://localhost/ciupakabros/php_u2_hw/create.php" class="btn btn-success">Add
     new account</a>
 
-
-
 <?php
 
     if (isset($_SESSION['msg'])) {
