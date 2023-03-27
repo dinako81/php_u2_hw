@@ -10,7 +10,7 @@
 
 
 <div style="float: right; margin-top: 20px; margin-right: 20px">
-    <form action="http://localhost:8080/ciupakabros/php_u2_hw/login/?logout" method="post">
+    <form action="http://localhost/ciupakabros/php_u2_hw/login/?logout" method="post">
         <button type="submit" class="btn btn-dark" class="btn btn-secondary">Log
             out</button>
     </form>
@@ -18,16 +18,16 @@
 
 
 <?php else : ?>
-<a href="http://localhost:8080/ciupakabros/php_u2_hw/login/" class="btn
+<a href="http://localhost/ciupakabros/php_u2_hw/login/" class="btn
     btn-secondary">Login</a>
 <?php endif ?>
 
 <h3 style="margin-top: 10px; margin-left: 20px">Hi <?= $_SESSION['log_name'] ?>!</h3>
 
 <a style="margin-top: 20px; margin-left: 20px"
-    href="http://localhost:8080/ciupakabros/php_u2_hw/users.php?page=home&sort=<?= $sort ?? '' ?>"
+    href="http://localhost/ciupakabros/php_u2_hw/users.php?page=home&sort=<?= $sort ?? '' ?>"
     class="btn btn-secondary">Home</a>
-<a style="margin-top: 20px" href="http://localhost:8080/ciupakabros/php_u2_hw/create.php" class="btn btn-success">Add
+<a style="margin-top: 20px" href="http://localhost/ciupakabros/php_u2_hw/create.php" class="btn btn-success">Add
     new account</a>
 
 

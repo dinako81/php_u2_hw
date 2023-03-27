@@ -8,38 +8,38 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         if ($_POST['ak'] ?? ''){
             if ($user['personal_code'] == $_POST['personal_code']) {
             $_SESSION['msg'] = ['type' => 'error', 'text' => 'Personal ID is not unique!'];
-            header('Location: http://localhost:8080/ciupakabros/php_u2_hw/create.php');
+            header('Location: http://localhost/ciupakabros/php_u2_hw/create.php');
             die;}
         }
         if (strlen($_POST['name']) < 3) {
             $_SESSION['msg'] = ['type' => 'error', 'text' => 'The name must contain at least 3 letters!'];
-            header('Location: http://localhost:8080/ciupakabros/php_u2_hw/create.php');
+            header('Location: http://localhost/ciupakabros/php_u2_hw/create.php');
             die;
         }
         if (strlen($_POST['surname']) < 3 || strlen($_POST['surname']) < 3) {
             $_SESSION['msg'] = ['type' => 'error', 'text' => 'The surname must contain at least 3 letters!'];
-            header('Location: http://localhost:8080/ciupakabros/php_u2_hw/create.php');
+            header('Location: http://localhost/ciupakabros/php_u2_hw/create.php');
             die;
         }
         if(!preg_match ("/^[a-zA-z]*$/", $_POST['name'] )) {  
             $_SESSION['msg'] = ['type' => 'error', 'text' =>"Only letters are allowed in name!"];  
-            header('Location: http://localhost:8080/ciupakabros/php_u2_hw/create.php');
+            header('Location: http://localhost/ciupakabros/php_u2_hw/create.php');
              die;
         } 
         if(!preg_match ("/^[a-zA-z]*$/", $_POST['surname'] )) {  
             $_SESSION['msg'] = ['type' => 'error', 'text' =>"Only letters are allowed in surname!"];  
-            header('Location: http://localhost:8080/ciupakabros/php_u2_hw/create.php');
+            header('Location: http://localhost/ciupakabros/php_u2_hw/create.php');
             die;
         } 
         if (strlen($_POST['personal_code']) < 11) {
             $_SESSION['msg'] = ['type' => 'error', 'text' => 'Personal ID should have 11 digits!'];
-            header('Location: http://localhost:8080/ciupakabros/php_u2_hw/create.php');
+            header('Location: http://localhost/ciupakabros/php_u2_hw/create.php');
             die;
         }  
 
         if (!preg_match('/^[3-6]\d{2}[0-1]\d[0-3]\d{4}$/', $_POST['personal_code'])) {
             $_SESSION['msg'] = ['type' => 'error', 'text' => "Personal ID isn't valid!"];
-            header('Location: http://localhost:8080/ciupakabros/php_u2_hw/create.php');
+            header('Location: http://localhost/ciupakabros/php_u2_hw/create.php');
             die;
         } 
 
@@ -68,7 +68,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     file_put_contents(__DIR__ . '/users.ser', $users);
 
     $_SESSION['msg'] = ['type' => 'ok', 'text' => 'User was created'];
-    header('Location: http://localhost:8080/ciupakabros/php_u2_hw/users.php?sort=id_desc');
+    header('Location: http://localhost/ciupakabros/php_u2_hw/users.php?sort=id_desc');
     die;
 }
 

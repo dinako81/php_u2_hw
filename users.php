@@ -72,14 +72,14 @@ elseif ($sort == 'surname_desc') {
                     <td><?= $user['acc_number'] ?></td>
                     <td><?= number_format($user['acc_balance'], 2, ',', ' ') ?> Eur</td>
                     <td>
-                        <form action="http://localhost:8080/ciupakabros/php_u2_hw/delete.php" method="post">
+                        <form action="http://localhost/ciupakabros/php_u2_hw/delete.php" method="post">
                             <input type="hidden" name="user_id" value="<?= $user['user_id'] ?>">
                             <button type="submit" class="btn btn-danger">Delete</button>
                         </form>
                     </td>
-                    <td><a href="http://localhost:8080/ciupakabros/php_u2_hw/addfunds.php?id=<?= $user['user_id'] ?>"
+                    <td><a href="http://localhost/ciupakabros/php_u2_hw/addfunds.php?id=<?= $user['user_id'] ?>"
                             class="btn btn-success">Add funds</a></td>
-                    <td> <a href="http://localhost:8080/ciupakabros/php_u2_hw/withdrawfunds.php?id=<?= $user['user_id'] ?>"
+                    <td> <a href="http://localhost/ciupakabros/php_u2_hw/withdrawfunds.php?id=<?= $user['user_id'] ?>"
                             class="btn btn-primary">Withdraw funds</a> </td>
                 </tr>
             </tbody>
